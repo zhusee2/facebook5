@@ -15,25 +15,37 @@ var videoContainer = document.querySelector('#fbxPhotoContentContainer .videoSta
     videoScriptRaw, videoParams;
 
 videoContainer.addEventListener('beforeload', function(event) {
-  videoContainer.innerHTML = null;
+  if (event.url.match(/\.gif$/)) {
+    videoContainer.innerHTML = null;
+    appendFacebookVideo();
+  }
   return false;
 }, true);
 
-for (var i = 0; i < scriptBlocks.length; i++) {
-  scriptRaw = scriptBlocks[i].innerHTML;
+var appendFacebookVideo = function() {
+  var videoParams = "",
+      videoParamsObj = {},
+      newVideoObject;
 
-  if (scriptRaw.match(/JSCC\.init/)) {
-    videoScriptRaw = scriptRaw;
+  for (var i = 0; i < scriptBlocks.length; i++) {
+    var scriptRaw = scriptBlocks[i].innerHTML;
+
+    if (scriptRaw.match(/JSCC\.init/)) {
+      videoParams = scriptRaw.match(/\["params","([^"]+)"\]/)
+    }
+  }
+
+  if (videoParams.length > 1) {
+    var params = videoParams[1],
+        paramsJSON = unescape(params.decodeUnicode());
+
+    videoParamsObj = JSON.parse(paramsJSON);
+    newVideoObject = document.createElement('video');
+
+    newVideoObject.src = videoParamsObj.video_data[0].hd_src;
+    newVideoObject.controls = true;
+    newVideoObject.setAttribute('style', 'width:100%;');
+
+    videoContainer.appendChild(newVideoObject);
   }
 }
-
-var videoParams = videoScriptRaw.match(/\["params","([^"]+)"\]/);
-
-if (videoParams.length > 1) {
-  var params = videoParams[1],
-      paramsJSON = unescape(params.decodeUnicode()),
-      paramsObj = JSON.parse(paramsJSON);
-
-  console.log(paramsObj);
-}
-
