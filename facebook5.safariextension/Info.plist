@@ -21,7 +21,17 @@
 	<key>Content</key>
 	<dict>
 		<key>Scripts</key>
-		<dict/>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>injected.js</string>
+			</array>
+		</dict>
+		<key>Whitelist</key>
+		<array>
+			<string>https://www.facebook.com/photo.php</string>
+			<string>http://www.facebook.com/photo.php</string>
+		</array>
 	</dict>
 	<key>Description</key>
 	<string>An extension to enable video playback through HTML5 video</string>
@@ -30,7 +40,16 @@
 	<key>Permissions</key>
 	<dict>
 		<key>Website Access</key>
-		<dict/>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.facebook.com</string>
+			</array>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
