@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Zhusee</string>
+	<key>Builder Version</key>
+	<string>8536.29.13</string>
+	<key>CFBundleDisplayName</key>
+	<string>Facebook5</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.zhusee2.extensions.facebook5</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict/>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict/>
+	</dict>
+	<key>Description</key>
+	<string>An extension to enable video playback through HTML5 video</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict/>
+	</dict>
+</dict>
+</plist>
