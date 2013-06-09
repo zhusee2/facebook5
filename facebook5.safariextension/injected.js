@@ -10,7 +10,7 @@ String.prototype.decodeUnicode = function() {
   return unicodeChars;
 }
 
-var videoContainer = document.querySelector('#fbxPhotoContentContainer .videoStage > div'),
+var videoContainer = document.querySelector('.fbxPhoto .videoStage > div'),
     scriptBlocks = document.querySelectorAll('body > script'),
     videoScriptRaw, videoParams;
 
@@ -37,12 +37,18 @@ var appendFacebookVideo = function() {
 
   if (videoParams.length > 1) {
     var params = videoParams[1],
-        paramsJSON = unescape(params.decodeUnicode());
+        paramsJSON = unescape(params.decodeUnicode()),
+        hdSrc, sdSrc;
 
     videoParamsObj = JSON.parse(paramsJSON);
+    hdSrc = videoParamsObj.video_data[0].hd_src;
+    sdSrc = videoParamsObj.video_data[0].sd_src;
+    posterSrc = videoParamsObj.video_data[0].thumbnail_src;
+
     newVideoObject = document.createElement('video');
 
-    newVideoObject.src = videoParamsObj.video_data[0].hd_src;
+    newVideoObject.src = (hdSrc === null) ? sdSrc : hdSrc;
+    newVideoObject.poster = posterSrc;
     newVideoObject.controls = true;
     newVideoObject.setAttribute('style', 'width:100%;');
 
