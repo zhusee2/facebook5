@@ -51,5 +51,9 @@
 			<string>Some</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://raw.github.com/zhusee2/facebook5/master/update.plist</string>
+	<key>Website</key>
+	<string>https://github.com/zhusee2/facebook5</string>
 </dict>
 </plist>
